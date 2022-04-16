@@ -1,10 +1,12 @@
 package com.admin_official.contacts
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.admin_official.contacts.databinding.FragmentMainBinding
@@ -19,6 +21,11 @@ class mainFrag : Fragment(), RecyclerViewAdapter.RVListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val hasReadContactsPermission =
+            ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_CONTACTS)
+
+        hasPermission = (hasReadContactsPermission != PackageManager.PERMISSION_DENIED)
 
         if(hasPermission) {
             viewModel.contacts.observe(this) {
