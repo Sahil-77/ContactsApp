@@ -10,10 +10,13 @@ import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.admin_official.contacts.databinding.ActivityMainBinding
+import java.util.*
 
 const val REQUEST_CODE_READ_CONTACTS = 1
 
-class MainActivity : AppCompatActivity() {
+var hasPermission = false
+
+class MainActivity : AppCompatActivity(), RecyclerViewAdapter.RVListener{
 
     private lateinit var binding: ActivityMainBinding
 
@@ -32,13 +35,11 @@ class MainActivity : AppCompatActivity() {
         val hasReadContactsPermission =
             ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_CONTACTS)
 
+        hasPermission = (hasReadContactsPermission != PackageManager.PERMISSION_DENIED)
+
         if(hasReadContactsPermission == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(this,
                 arrayOf(android.Manifest.permission.READ_CONTACTS), REQUEST_CODE_READ_CONTACTS)
-        }
-
-        viewModel.contacts.observe(this) {
-            // setContacts here
         }
     }
 
@@ -50,7 +51,11 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if(requestCode == REQUEST_CODE_READ_CONTACTS) {
-            // do something on the callback
+            hasPermission = true
         }
+    }
+
+    override fun onItemClicked(contest: Contact) {
+        // todo
     }
 }

@@ -43,8 +43,9 @@ class AppViewModel(application: Application): AndroidViewModel(application) {
                 }
             }
         }
-    }
 
+        contacts.value = newContacts
+    }
 
     private fun getPhoneNumber(id: String): String {
         var number = ""
