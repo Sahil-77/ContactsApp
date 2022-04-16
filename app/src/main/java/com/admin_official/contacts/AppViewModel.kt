@@ -13,13 +13,18 @@ class AppViewModel(application: Application): AndroidViewModel(application) {
     val contacts = MutableLiveData<List<Contact>>()
 //    private val context = getApplication<Application>().applicationContext
 
-    init {
+    var thisApplication: Application = application
 
+//    init {
+//        if(hasPermission) download();
+//    }
+
+    public fun download() {
         val projection = arrayOf(ContactsContract.Contacts._ID,
             ContactsContract.Contacts.DISPLAY_NAME_PRIMARY,
             ContactsContract.Contacts.HAS_PHONE_NUMBER)
 
-        val cursor = application.contentResolver.query(
+        val cursor = thisApplication.contentResolver.query(
             ContactsContract.Contacts.CONTENT_URI,
             projection,
             null,
@@ -45,6 +50,7 @@ class AppViewModel(application: Application): AndroidViewModel(application) {
         }
 
         contacts.value = newContacts
+
     }
 
     private fun getPhoneNumber(id: String): String {

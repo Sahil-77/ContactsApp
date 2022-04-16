@@ -22,15 +22,9 @@ class mainFrag : Fragment(), RecyclerViewAdapter.RVListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val hasReadContactsPermission =
-            ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.READ_CONTACTS)
-
-        hasPermission = (hasReadContactsPermission != PackageManager.PERMISSION_DENIED)
-
-        if(hasPermission) {
-            viewModel.contacts.observe(this) {
-                adapter.setsContact(it)
-            }
+        // viewModel assignment
+        viewModel.contacts.observe(this) {
+            adapter.setsContact(it)
         }
     }
 

@@ -41,6 +41,8 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.RVListener{
             ActivityCompat.requestPermissions(this,
                 arrayOf(android.Manifest.permission.READ_CONTACTS), REQUEST_CODE_READ_CONTACTS)
         }
+
+        if(hasPermission) viewModel.download();
     }
 
     override fun onRequestPermissionsResult(
@@ -52,6 +54,7 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.RVListener{
 
         if(requestCode == REQUEST_CODE_READ_CONTACTS) {
             hasPermission = true
+            viewModel.download()
         }
     }
 
