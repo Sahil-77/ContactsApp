@@ -53,8 +53,9 @@ class MainActivity : AppCompatActivity(), RecyclerViewAdapter.RVListener{
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
         if(requestCode == REQUEST_CODE_READ_CONTACTS) {
-            hasPermission = true
-            viewModel.download()
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                viewModel.download()
+            }
         }
     }
 
