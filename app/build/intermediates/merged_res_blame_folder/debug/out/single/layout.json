@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\SAHIL\\Downloads\\AlgoZen\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\contact_detail.xml",
+        "source": "C:\\Users\\SAHIL\\Downloads\\AlgoZen\\app\\src\\main\\res\\layout\\contact_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\SAHIL\\Downloads\\AlgoZen\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\Users\\SAHIL\\Downloads\\AlgoZen\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\SAHIL\\Downloads\\AlgoZen\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_main.xml",
+        "source": "C:\\Users\\SAHIL\\Downloads\\AlgoZen\\app\\src\\main\\res\\layout\\fragment_main.xml"
+    }
+]
